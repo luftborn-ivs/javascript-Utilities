@@ -1,0 +1,25 @@
+{
+  "name": "@luftborn/utilities",
+  "version": "1.0.6",
+  "description": "typescript utilities",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luftborn-ivs/javascript-Utilities"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "tsc --declaration"
+  },
+  "bundledDependencies": [
+    "js-polyfills"
+  ],
+  "dependencies": {
+    "@types/google.analytics": "0.0.40"
+  },
+  "keywords": [
+    "typescript, luftborn"
+  ],
+  "author": "LuftBorn",
+  "license": "ISC"
+}
