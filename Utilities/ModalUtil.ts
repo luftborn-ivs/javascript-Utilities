@@ -10,7 +10,7 @@ export default class ModalUtil {
             document.querySelectorAll(".modal"),
         );
 
-        document.querySelector('body').addEventListener('click', (event) => {
+        document.querySelector('body').onclick = (event) => {
             const target = event.target as HTMLElement;
             if (target.hasAttribute("data-toggle") && target.getAttribute("data-toggle") === "modal") {
                 const domUtil = new DomUtil(target);
@@ -18,7 +18,7 @@ export default class ModalUtil {
                 const targetModal = document.querySelector(targetSelector);
                 this.toggleModal(targetModal);
             }
-        });
+        };
 
 
         this.Modals = this.Elements.map(
@@ -37,6 +37,7 @@ export default class ModalUtil {
 
 // tslint:disable-next-line: max-classes-per-file
 class Modal {
+    public onhide: Event;
     private Modal: HTMLElement;
     backDrop: HTMLDivElement;
     constructor(element: HTMLElement) {
@@ -47,6 +48,7 @@ class Modal {
         this.bindEscape();
         this.backDrop = document.createElement("div");
         this.backDrop.classList.add("modal-backdrop", "fade", "show");
+        this.onhide = new Event('hide');
     }
     public show(): void {
         this.Modal.style.display = "block";
@@ -56,49 +58,50 @@ class Modal {
     public hide(): void {
         this.Modal.style.display = "none";
         this.Modal.classList.remove("show");
+        this.Modal.dispatchEvent(this.onhide);
         let backdrop = document.querySelector(".modal-backdrop.fade.show");
         if (backdrop) {
             backdrop.remove();
         }
     }
     private bindClick(): void {
-        this.Modal.addEventListener("click", (event: Event) => {
+        this.Modal.onclick = (event: Event) => {
             if (event.target !== this.Modal) {
                 return;
             } else {
                 new Modal(this.Modal).hide();
             }
-        });
+        };
     }
     private bindClose(): void {
-        const dismiss = ArrayUtil.FromNodeList(
+        const dismiss : HTMLElement[] = ArrayUtil.FromNodeList(
             this.Modal.querySelectorAll("[data-dismiss]"),
         );
         dismiss.forEach(element => {
-            element.addEventListener("click", this.hide.bind(this));
+            element.onclick = this.hide.bind(this);
         });
     }
     private bindSubmit(): void {
-        const submit = ArrayUtil.FromNodeList(
+        const submit : HTMLElement[] = ArrayUtil.FromNodeList(
             this.Modal.querySelectorAll("[data-submit]"),
         );
         submit.forEach(element => {
             const domUtil = new DomUtil(element);
             const value = domUtil.getDataAttr("submit-value");
             const targetSelector = domUtil.getDataAttr("submit");
-            element.addEventListener("click", () => {
+            element.onclick = () => {
                 this.hide();
                 document.querySelector(targetSelector).scrollIntoView();
                 const positionInput = document.getElementById("position") as HTMLFormElement;
                 positionInput.value = value;
-            });
+            };
         });
     }
     private bindEscape(): void {
-        document.addEventListener("keydown", (event: KeyboardEvent) => {
+        document.onkeydown = (event: KeyboardEvent) => {
             if (event.key === "Escape") {
                 this.hide();
             }
-        });
+        };
     }
 }
