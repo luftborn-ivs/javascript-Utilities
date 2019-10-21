@@ -8,7 +8,7 @@ var ModalUtil = /** @class */ (function () {
     ModalUtil.prototype.execute = function () {
         var _this = this;
         this.Elements = ArrayUtil_1.default.FromNodeList(document.querySelectorAll(".modal"));
-        document.querySelector('body').addEventListener('click', function (event) {
+        document.querySelector('body').onclick = function (event) {
             var target = event.target;
             if (target.hasAttribute("data-toggle") && target.getAttribute("data-toggle") === "modal") {
                 var domUtil = new DomUtil_1.default(target);
@@ -16,7 +16,7 @@ var ModalUtil = /** @class */ (function () {
                 var targetModal = document.querySelector(targetSelector);
                 _this.toggleModal(targetModal);
             }
-        });
+        };
         this.Modals = this.Elements.map(function (modal) { return new Modal(modal); });
     };
     ModalUtil.prototype.toggleModal = function (element) {
@@ -41,6 +41,7 @@ var Modal = /** @class */ (function () {
         this.bindEscape();
         this.backDrop = document.createElement("div");
         this.backDrop.classList.add("modal-backdrop", "fade", "show");
+        this.onhide = new Event('hide');
     }
     Modal.prototype.show = function () {
         this.Modal.style.display = "block";
@@ -50,6 +51,7 @@ var Modal = /** @class */ (function () {
     Modal.prototype.hide = function () {
         this.Modal.style.display = "none";
         this.Modal.classList.remove("show");
+        this.Modal.dispatchEvent(this.onhide);
         var backdrop = document.querySelector(".modal-backdrop.fade.show");
         if (backdrop) {
             backdrop.remove();
@@ -57,20 +59,20 @@ var Modal = /** @class */ (function () {
     };
     Modal.prototype.bindClick = function () {
         var _this = this;
-        this.Modal.addEventListener("click", function (event) {
+        this.Modal.onclick = function (event) {
             if (event.target !== _this.Modal) {
                 return;
             }
             else {
                 new Modal(_this.Modal).hide();
             }
-        });
+        };
     };
     Modal.prototype.bindClose = function () {
         var _this = this;
         var dismiss = ArrayUtil_1.default.FromNodeList(this.Modal.querySelectorAll("[data-dismiss]"));
         dismiss.forEach(function (element) {
-            element.addEventListener("click", _this.hide.bind(_this));
+            element.onclick = _this.hide.bind(_this);
         });
     };
     Modal.prototype.bindSubmit = function () {
@@ -80,21 +82,21 @@ var Modal = /** @class */ (function () {
             var domUtil = new DomUtil_1.default(element);
             var value = domUtil.getDataAttr("submit-value");
             var targetSelector = domUtil.getDataAttr("submit");
-            element.addEventListener("click", function () {
+            element.onclick = function () {
                 _this.hide();
                 document.querySelector(targetSelector).scrollIntoView();
                 var positionInput = document.getElementById("position");
                 positionInput.value = value;
-            });
+            };
         });
     };
     Modal.prototype.bindEscape = function () {
         var _this = this;
-        document.addEventListener("keydown", function (event) {
+        document.onkeydown = function (event) {
             if (event.key === "Escape") {
                 _this.hide();
             }
-        });
+        };
     };
     return Modal;
 }());
