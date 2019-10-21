@@ -24,6 +24,7 @@ import DomUtil from "./Utilities/DomUtil";
 import CustomInputs from "./Utilities/CustomInputs";
 import { CopyUtility } from "./Utilities/Copy Utility";
 import ChangeLanguage from "./Utilities/ChangeLanguage";
+import debouncer from "./Utilities/Debouncer";
 
 export {
     AnalyticsClickEvents,
@@ -53,4 +54,5 @@ export {
     throttle,
     UrlUtil,
     ViewportUtil,
+    debouncer
 };

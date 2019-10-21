@@ -53,4 +53,6 @@ var Copy_Utility_1 = require("./Utilities/Copy Utility");
 exports.CopyUtility = Copy_Utility_1.CopyUtility;
 var ChangeLanguage_1 = require("./Utilities/ChangeLanguage");
 exports.ChangeLanguage = ChangeLanguage_1.default;
+var Debouncer_1 = require("./Utilities/Debouncer");
+exports.debouncer = Debouncer_1.default;
 //# sourceMappingURL=index.js.map

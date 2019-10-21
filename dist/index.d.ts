@@ -24,4 +24,5 @@ import DomUtil from "./Utilities/DomUtil";
 import CustomInputs from "./Utilities/CustomInputs";
 import { CopyUtility } from "./Utilities/Copy Utility";
 import ChangeLanguage from "./Utilities/ChangeLanguage";
-export { AnalyticsClickEvents, ArrayUtil, BackgroundLazyLoader, BrowserType, ChangeLanguage, CopyUtility, CustomInputs, DomUtil, ElementScale, FormUtils, GlobalDomUtil, HeaderAnimation, HtmlLoader, ImageLazyLoader, MakeRequest, ModalUtil, NavBar, NavBarScrolled, Overlays, ReplaceOnClick, ScriptLoader, ScrollPosition, StringUtil, debounce, throttle, UrlUtil, ViewportUtil, };
+import debouncer from "./Utilities/Debouncer";
+export { AnalyticsClickEvents, ArrayUtil, BackgroundLazyLoader, BrowserType, ChangeLanguage, CopyUtility, CustomInputs, DomUtil, ElementScale, FormUtils, GlobalDomUtil, HeaderAnimation, HtmlLoader, ImageLazyLoader, MakeRequest, ModalUtil, NavBar, NavBarScrolled, Overlays, ReplaceOnClick, ScriptLoader, ScrollPosition, StringUtil, debounce, throttle, UrlUtil, ViewportUtil, debouncer };
