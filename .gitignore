@@ -1,0 +1,12 @@
+
+# generated assets
+package-lock.json
+
+
+# compiled output
+dist
+
+# dependencies
+/node_modules
+
+test

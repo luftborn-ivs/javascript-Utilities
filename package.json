@@ -17,6 +17,37 @@
   "dependencies": {
     "@types/google.analytics": "0.0.40"
   },
+  "devDependencies": {
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/register": "^7.6.0",
+    "@types/googlemaps": "^3.37.7",
+    "babel-preset-minify": "^0.5.1",
+    "babelify": "^10.0.0",
+    "browserify": "~16.5.0",
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.0",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-debug": "^4.0.0",
+    "gulp-imagemin": "^6.1.0",
+    "gulp-jpeg-2000": "^1.1.2",
+    "gulp-jpeg-xr": "^1.1.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-svgo": "2.1.1",
+    "gulp-typescript": "^5.0.1",
+    "gulp-uglify": "^3.0.2",
+    "gulp-webp": "4.0.1",
+    "gulp-webserver": "~0.9.1",
+    "node-sass": "^4.12.0",
+    "tsify": "^4.0.1",
+    "typescript": "^3.6.3",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "~2.0.0"
+  },
   "keywords": [
     "typescript, luftborn"
   ],
