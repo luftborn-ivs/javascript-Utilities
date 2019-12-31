@@ -1,6 +1,6 @@
 {
   "name": "@luftborn/utilities",
-  "version": "1.0.11",
+  "version": "1.0.13",
   "description": "typescript utilities",
   "main": "dist/index.js",
   "repository": {

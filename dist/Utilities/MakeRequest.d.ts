@@ -4,5 +4,5 @@ export default class MakeRequest {
     headers: any;
     constructor(url: string, method?: string, headers?: any);
     private setHeaders;
-    send(data?: any): Promise<unknown>;
+    send(data?: any): Promise<{}>;
 }
