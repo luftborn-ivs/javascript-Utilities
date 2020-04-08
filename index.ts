@@ -25,6 +25,7 @@ import CustomInputs from "./Utilities/CustomInputs";
 import { CopyUtility } from "./Utilities/Copy Utility";
 import ChangeLanguage from "./Utilities/ChangeLanguage";
 import debouncer from "./Utilities/Debouncer";
+import UrlHelper from "./Utilities/URLHelper";
 
 export {
     AnalyticsClickEvents,
@@ -54,5 +55,6 @@ export {
     throttle,
     UrlUtil,
     ViewportUtil,
-    debouncer
+    debouncer,
+    UrlHelper
 };
