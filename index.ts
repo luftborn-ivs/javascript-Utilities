@@ -26,6 +26,7 @@ import { CopyUtility } from "./Utilities/Copy Utility";
 import ChangeLanguage from "./Utilities/ChangeLanguage";
 import debouncer from "./Utilities/Debouncer";
 import UrlHelper from "./Utilities/URLHelper";
+import HTMLImport from "./Utilities/HTMLImport";
 
 export {
     AnalyticsClickEvents,
@@ -56,5 +57,6 @@ export {
     UrlUtil,
     ViewportUtil,
     debouncer,
-    UrlHelper
+    UrlHelper,
+    HTMLImport
 };

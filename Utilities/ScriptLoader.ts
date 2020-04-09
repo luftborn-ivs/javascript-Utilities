@@ -10,14 +10,14 @@ export class ScriptLoader {
 	public load() {
 		// Adding t<he script tag to the head as suggested before
 		const head = document.head;
-		const script = document.createElement("script") as HTMLScriptElement;
+		const script = document.createElement("script");
 		script.type = "text/javascript";
-        script.src = this.script;
-        
+		script.src = this.script;
+
 		// Then bind the event to the callback function.
 		// There are several events for cross browser compatibility.
-        script.onloadend = this.callback();
-        
+		script.onload = this.callback();
+
 		// Fire the loading
 		head.appendChild(script);
 	}
