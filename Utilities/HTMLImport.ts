@@ -4,11 +4,14 @@ export default class HTMLImport {
 
     constructor() {
 
+    }
+
+    public execute() {
         this.includeHTML();
     }
+
     private includeHTML() {
         let elements: HTMLElement[], element: HTMLElement, filePath: string, xhttp: XMLHttpRequest;
-        /* Loop through a collection of all HTML elements: */
         elements = ArrayUtil.FromNodeList(document.querySelectorAll("[html-import]")) as HTMLElement[];
         for (let i = 0; i < elements.length; i++) {
             element = elements[i];
@@ -18,8 +21,13 @@ export default class HTMLImport {
                 xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = () => {
                     if (xhttp.readyState == 4) {
-                        if (xhttp.status == 200) { element.innerHTML = xhttp.responseText; }
-                        if (xhttp.status == 404) { element.innerHTML = "Page not found."; }
+                        if (xhttp.status == 200) {
+                            element.insertAdjacentHTML("beforebegin", xhttp.responseText);
+                            element.remove();
+                        }
+                        if (xhttp.status == 404) {
+                            element.innerHTML = "Page not found.";
+                        }
                         element.removeAttribute("html-import");
                         this.includeHTML();
                     }
