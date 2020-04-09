@@ -1,3 +1,5 @@
+import ArrayUtil from "./ArrayUtil";
+
 export default class HTMLImport {
 
     constructor() {
@@ -5,14 +7,14 @@ export default class HTMLImport {
         this.includeHTML();
     }
     private includeHTML() {
-        let elements, element, file, xhttp;
+        let elements: HTMLElement[], element: HTMLElement, filePath: string, xhttp: XMLHttpRequest;
         /* Loop through a collection of all HTML elements: */
-        elements = document.querySelectorAll("[html-import]");
+        elements = ArrayUtil.FromNodeList(document.querySelectorAll("[html-import]")) as HTMLElement[];
         for (let i = 0; i < elements.length; i++) {
             element = elements[i];
             /*search for elements with a certain atrribute:*/
-            file = element.getAttribute("html-import");
-            if (file) {
+            filePath = element.getAttribute("html-import");
+            if (filePath) {
                 xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = () => {
                     if (xhttp.readyState == 4) {
@@ -22,7 +24,7 @@ export default class HTMLImport {
                         this.includeHTML();
                     }
                 }
-                xhttp.open("GET", file, true);
+                xhttp.open("GET", filePath, true);
                 xhttp.send();
                 return;
             }
