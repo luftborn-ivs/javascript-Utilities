@@ -22,7 +22,7 @@ import FormUtils from "./Utilities/FormUtils";
 import ElementScale from "./Utilities/ElementScale";
 import DomUtil from "./Utilities/DomUtil";
 import CustomInputs from "./Utilities/CustomInputs";
-import { CopyUtility } from "./Utilities/Copy Utility";
+import { CopyUtility } from "./Utilities/CopyUtility";
 import ChangeLanguage from "./Utilities/ChangeLanguage";
 import debouncer from "./Utilities/Debouncer";
 import UrlHelper from "./Utilities/URLHelper";
